@@ -10,9 +10,10 @@ interface MovieSliderProps {
   items?: MovieCardItem[];
   isLoading?: boolean;
   seeAllHref?: string;
+  mediaType?: 'movie' | 'tv';
 }
 
-export default function MovieSlider({ title, items = [], isLoading = false, seeAllHref }: MovieSliderProps) {
+export default function MovieSlider({ title, items = [], isLoading = false, seeAllHref, mediaType }: MovieSliderProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -118,7 +119,7 @@ export default function MovieSlider({ title, items = [], isLoading = false, seeA
                 key={item.id}
                 className="flex-shrink-0 w-[42%] sm:w-[28%] md:w-[22%] lg:w-[17%] snap-start"
               >
-                <MovieCard item={item} />
+                <MovieCard item={item} mediaType={mediaType} />
               </div>
             ))
           )}
