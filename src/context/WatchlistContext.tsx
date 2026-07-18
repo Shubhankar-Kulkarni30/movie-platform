@@ -24,27 +24,32 @@ export function WatchlistProvider({ children }: { children: React.ReactNode }) {
 
   // Load from localStorage on mount
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem('movie_platform_watchlist_v2');
-      if (stored) {
-        setWatchlist(JSON.parse(stored));
-      } else {
-        // Fallback or migration if needed
-        const legacy = localStorage.getItem('movie_platform_watchlist');
-        if (legacy) {
-          const parsedLegacy = JSON.parse(legacy);
-          if (Array.isArray(parsedLegacy)) {
-            // Assume legacy items are all movies
-            const migrated: WatchlistItem[] = parsedLegacy.map(id => ({ id: Number(id), type: 'movie' }));
-            setWatchlist(migrated);
-            localStorage.setItem('movie_platform_watchlist_v2', JSON.stringify(migrated));
+    const loadData = () => {
+      try {
+        const stored = localStorage.getItem('movie_platform_watchlist_v2');
+        if (stored) {
+          setWatchlist(JSON.parse(stored));
+        } else {
+          // Fallback or migration if needed
+          const legacy = localStorage.getItem('movie_platform_watchlist');
+          if (legacy) {
+            const parsedLegacy = JSON.parse(legacy);
+            if (Array.isArray(parsedLegacy)) {
+              // Assume legacy items are all movies
+              const migrated: WatchlistItem[] = parsedLegacy.map(id => ({ id: Number(id), type: 'movie' }));
+              setWatchlist(migrated);
+              localStorage.setItem('movie_platform_watchlist_v2', JSON.stringify(migrated));
+            }
           }
         }
+      } catch (e) {
+        console.error('Failed to load watchlist from localStorage', e);
+      } finally {
+        setIsHydrated(true);
       }
-    } catch (e) {
-      console.error('Failed to load watchlist from localStorage', e);
-    }
-    setIsHydrated(true);
+    };
+
+    setTimeout(loadData, 0);
   }, []);
 
   // Save to localStorage whenever watchlist changes

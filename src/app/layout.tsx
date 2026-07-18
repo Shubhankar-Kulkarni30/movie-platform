@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FlixSphere | Premium Cinematic Platform",
+  title: "SK Movies | Premium Cinematic Platform",
   description: "Explore your favorite movies, organize your watchlist, and discover top trending cinema titles.",
 };
 

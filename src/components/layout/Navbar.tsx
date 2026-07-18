@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Search, Heart, User, LogOut, Menu, X, Film } from 'lucide-react';
+import { Search, Heart, User, LogOut, Menu, X, Film, Clapperboard } from 'lucide-react';
 import { useWatchlist } from '@/context/WatchlistContext';
 
 export default function Navbar() {
@@ -56,11 +56,11 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center space-x-2 group">
-              <div className="p-2 bg-red-600 rounded-lg group-hover:bg-red-700 transition-colors">
-                <Film className="w-5 h-5 text-white" />
+              <div className="p-2 bg-red-600 rounded-lg group-hover:bg-red-700 transition-colors shadow-lg shadow-red-600/30">
+                <Clapperboard className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold tracking-wider text-white">
-                FLIX<span className="text-red-500">SPHERE</span>
+              <span className="text-xl font-black tracking-wider text-white">
+                SK <span className="text-red-500">MOVIES</span>
               </span>
             </Link>
           </div>

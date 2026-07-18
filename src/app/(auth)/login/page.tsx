@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Film, User, Lock, Mail, ChevronRight, AlertCircle } from 'lucide-react';
+import { Film, User, Lock, Mail, ChevronRight, AlertCircle, Clapperboard } from 'lucide-react';
 import Link from 'next/link';
 
 export default function LoginPage() {
@@ -63,10 +63,10 @@ export default function LoginPage() {
         {/* App Branding */}
         <div className="text-center space-y-2">
           <div className="inline-flex p-3 bg-red-600 rounded-2xl shadow-xl shadow-red-600/20 text-white mb-2">
-            <Film className="w-6 h-6" />
+            <Clapperboard className="w-6 h-6" />
           </div>
           <h2 className="text-2xl font-black tracking-tight text-white">
-            Welcome to FlixSphere
+            Welcome to SK Movies
           </h2>
           <p className="text-xs text-gray-500">
             Sign in to start creating your perfect watchlist.

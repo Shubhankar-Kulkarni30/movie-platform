@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Film } from 'lucide-react';
+import { Clapperboard } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -14,11 +14,11 @@ export default function Footer() {
           {/* Logo and About */}
           <div className="space-y-4 md:col-span-1">
             <Link href="/" className="flex items-center space-x-2 group">
-              <div className="p-2 bg-red-600 rounded-lg group-hover:bg-red-700 transition-colors">
-                <Film className="w-5 h-5 text-white" />
+              <div className="p-2 bg-red-600 rounded-lg group-hover:bg-red-700 transition-colors shadow-lg shadow-red-600/30">
+                <Clapperboard className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold tracking-wider text-white">
-                FLIX<span className="text-red-500">SPHERE</span>
+              <span className="text-xl font-black tracking-wider text-white">
+                SK <span className="text-red-500">MOVIES</span>
               </span>
             </Link>
             <p className="text-sm leading-relaxed text-gray-500">
@@ -96,7 +96,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-900 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-600">
-          <p>© {currentYear} FlixSphere. All rights reserved.</p>
+          <p>© {currentYear} SK Movies. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 sm:mt-0">
             <a href="#" className="hover:text-gray-400 transition-colors">Terms of Use</a>
             <a href="#" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
