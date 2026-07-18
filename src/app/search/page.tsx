@@ -44,7 +44,7 @@ function SearchContent() {
   ) as MovieCardItem[];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-grow flex flex-col">
+    <div className="w-full x-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-grow flex flex-col">
       {/* Search Input Box */}
       <div className="mb-10 max-w-2xl mx-auto w-full">
         <form onSubmit={handleSearchSubmit} className="relative">

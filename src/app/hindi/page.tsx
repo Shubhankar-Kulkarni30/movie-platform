@@ -22,7 +22,7 @@ export default function HindiMoviesPage() {
   const totalResults = data?.total_results || 0;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-grow flex flex-col min-h-[80vh]">
+    <div className="w-full x-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-grow flex flex-col min-h-[80vh]">
       {/* Premium Page Header */}
       <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-900 pb-6">
         <div>

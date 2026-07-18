@@ -40,7 +40,7 @@ export default function WatchlistPage() {
     .filter((item): item is MovieCardItem => item !== null);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-grow flex flex-col">
+    <div className="w-full x-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-grow flex flex-col">
       {/* Header section */}
       <div className="flex items-center justify-between border-b border-gray-900 pb-6 mb-8">
         <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white flex items-center gap-3">

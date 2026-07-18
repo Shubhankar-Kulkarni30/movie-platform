@@ -37,7 +37,7 @@ export default function TVDetailsPage({ params }: TVDetailsProps) {
       <div className="relative pb-16 bg-[#060608] min-h-screen text-white animate-pulse">
         {/* Skeletal Backdrop Header */}
         <div className="relative w-full h-[45vh] sm:h-[60vh] bg-gray-950/80 flex items-end">
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-end">
+          <div className="relative z-10 w-full w-full x-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-end">
             <div className="hidden md:block w-48 lg:w-56 h-72 bg-gray-900 rounded-xl flex-shrink-0" />
             <div className="space-y-4 max-w-3xl w-full">
               <div className="w-24 h-5 bg-gray-900 rounded-full" />
@@ -51,7 +51,7 @@ export default function TVDetailsPage({ params }: TVDetailsProps) {
           </div>
         </div>
         {/* Skeletal Tabs Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="w-full x-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2 space-y-6">
             <div className="h-10 bg-gray-950 border-b border-gray-900" />
             <div className="h-4 bg-gray-900 rounded w-full" />
@@ -130,7 +130,7 @@ export default function TVDetailsPage({ params }: TVDetailsProps) {
         </div>
 
         {/* Cinematic Header overlay */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
+        <div className="relative z-10 w-full w-full x-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-end">
             {/* Poster */}
             <div className="hidden md:block w-48 lg:w-56 flex-shrink-0 rounded-xl overflow-hidden shadow-2xl border border-gray-800 bg-gray-950 aspect-[2/3]">
@@ -232,7 +232,7 @@ export default function TVDetailsPage({ params }: TVDetailsProps) {
       </div>
 
       {/* Main Details Body */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="w-full x-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Left Column (Main Tabs Content) */}
           <div className="lg:col-span-2 space-y-8">

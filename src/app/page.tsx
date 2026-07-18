@@ -57,7 +57,7 @@ export default function Home() {
       <div className="relative pb-16 bg-[#060608] min-h-screen text-white overflow-hidden">
         {/* Skeletal Hero Banner */}
         <div className="relative w-full h-[75vh] sm:h-[85vh] bg-[#0c0c0f] flex items-center animate-pulse">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-6">
+          <div className="w-full x-auto px-4 sm:px-6 lg:px-8 w-full space-y-6">
             <div className="w-40 h-6 bg-gray-900 rounded-full" />
             <div className="w-1/2 sm:w-2/3 h-12 bg-gray-900 rounded-lg" />
             <div className="w-1/3 h-6 bg-gray-900 rounded-full" />
@@ -98,7 +98,7 @@ export default function Home() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative z-20 w-full mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-2xl space-y-6">
             <div className="inline-flex items-center gap-2 bg-red-600/90 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-red-500/30">
               Trending Blockbuster
