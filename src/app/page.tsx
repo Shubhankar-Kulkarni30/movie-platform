@@ -1,33 +1,42 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { Play, Plus, Check, Star, Info, X } from 'lucide-react';
-import { useWatchlist } from '@/context/WatchlistContext';
-import MovieSlider from '@/components/movie/MovieSlider';
-import Link from 'next/link';
-import { TMDBVideo } from '@/types/tmdb';
+import React, { useState } from "react";
+import { Play, Plus, Check, Star, Info, X } from "lucide-react";
+import { useWatchlist } from "@/context/WatchlistContext";
+import MovieSlider from "@/components/movie/MovieSlider";
+import Link from "next/link";
+import { TMDBVideo } from "@/types/tmdb";
 import {
   useTrendingMovies,
   usePopularMovies,
+  usePopularHindiMovies,
   useTopRatedMovies,
   useUpcomingMovies,
   useNowPlaying,
   useTrendingTV,
   usePopularTV,
   useMovieVideos,
-} from '@/hooks/useTmdb';
+} from "@/hooks/useTmdb";
 
 export default function Home() {
   const { isInWatchlist, toggleWatchlist } = useWatchlist();
   const [showTrailer, setShowTrailer] = useState(false);
 
   // Fetch all live categories
-  const { data: trendingMoviesData, isLoading: isTrendingLoading } = useTrendingMovies();
-  const { data: popularMoviesData, isLoading: isPopularLoading } = usePopularMovies();
-  const { data: topRatedMoviesData, isLoading: isTopRatedLoading } = useTopRatedMovies();
-  const { data: upcomingMoviesData, isLoading: isUpcomingLoading } = useUpcomingMovies();
-  const { data: nowPlayingMoviesData, isLoading: isNowPlayingLoading } = useNowPlaying();
-  const { data: trendingTVData, isLoading: isTrendingTVLoading } = useTrendingTV();
+  const { data: trendingMoviesData, isLoading: isTrendingLoading } =
+    useTrendingMovies();
+  const { data: popularMoviesData, isLoading: isPopularLoading } =
+    usePopularMovies();
+  const { data: popularHindiMoviesData, isLoading: isPopularHindiLoading } =
+    usePopularHindiMovies();
+  const { data: topRatedMoviesData, isLoading: isTopRatedLoading } =
+    useTopRatedMovies();
+  const { data: upcomingMoviesData, isLoading: isUpcomingLoading } =
+    useUpcomingMovies();
+  const { data: nowPlayingMoviesData, isLoading: isNowPlayingLoading } =
+    useNowPlaying();
+  const { data: trendingTVData, isLoading: isTrendingTVLoading } =
+    useTrendingTV();
   const { data: popularTVData, isLoading: isPopularTVLoading } = usePopularTV();
 
   // Selected hero movie (first item in trending)
@@ -37,9 +46,10 @@ export default function Home() {
   // Fetch trailer videos for the hero movie
   const { data: videosData } = useMovieVideos(heroId);
   const trailerVideo = videosData?.results?.find(
-    (v: TMDBVideo) => v.site === 'YouTube' && (v.type === 'Trailer' || v.type === 'Teaser')
+    (v: TMDBVideo) =>
+      v.site === "YouTube" && (v.type === "Trailer" || v.type === "Teaser"),
   );
-  const isHeroSaved = heroMovie ? isInWatchlist(heroMovie.id, 'movie') : false;
+  const isHeroSaved = heroMovie ? isInWatchlist(heroMovie.id, "movie") : false;
 
   // Handle loading skeletons for the entire top page fold
   if (isTrendingLoading || !heroMovie) {
@@ -104,7 +114,11 @@ export default function Home() {
                 <span>{heroMovie.vote_average.toFixed(1)} Rating</span>
               </div>
               <span>•</span>
-              <span>{heroMovie.release_date ? new Date(heroMovie.release_date).getFullYear() : 'N/A'}</span>
+              <span>
+                {heroMovie.release_date
+                  ? new Date(heroMovie.release_date).getFullYear()
+                  : "N/A"}
+              </span>
               <span>•</span>
               <span className="bg-gray-800 border border-gray-700/50 px-2 py-0.5 rounded text-xs text-gray-300 uppercase">
                 Movie
@@ -127,11 +141,11 @@ export default function Home() {
               )}
 
               <button
-                onClick={() => toggleWatchlist(heroMovie.id, 'movie')}
+                onClick={() => toggleWatchlist(heroMovie.id, "movie")}
                 className={`flex items-center gap-2 px-6 py-3 rounded-full border font-bold transition-all hover:scale-105 cursor-pointer ${
                   isHeroSaved
-                    ? 'bg-red-600/20 border-red-500 text-red-400 hover:bg-red-600/30'
-                    : 'bg-black/60 border-gray-700 text-white hover:bg-black/80'
+                    ? "bg-red-600/20 border-red-500 text-red-400 hover:bg-red-600/30"
+                    : "bg-black/60 border-gray-700 text-white hover:bg-black/80"
                 }`}
               >
                 {isHeroSaved ? (
@@ -164,13 +178,47 @@ export default function Home() {
         {/* Gradients transition from hero background */}
         <div className="w-full h-24 bg-gradient-to-t from-[#060608] to-transparent pointer-events-none" />
 
-        <MovieSlider title="Trending Movies" items={trendingMoviesData?.results} isLoading={isTrendingLoading} />
-        <MovieSlider title="Popular Movies" items={popularMoviesData?.results} isLoading={isPopularLoading} />
-        <MovieSlider title="Top Rated Masterpieces" items={topRatedMoviesData?.results} isLoading={isTopRatedLoading} />
-        <MovieSlider title="Now Playing in Theaters" items={nowPlayingMoviesData?.results} isLoading={isNowPlayingLoading} />
-        <MovieSlider title="Upcoming Releases" items={upcomingMoviesData?.results} isLoading={isUpcomingLoading} />
-        <MovieSlider title="Trending TV Shows" items={trendingTVData?.results} isLoading={isTrendingTVLoading} />
-        <MovieSlider title="Popular TV Series" items={popularTVData?.results} isLoading={isPopularTVLoading} />
+        <MovieSlider
+          title="Popular Hindi Movies"
+          items={popularHindiMoviesData?.results}
+          isLoading={isPopularHindiLoading}
+          seeAllHref="/hindi"
+        />
+        <MovieSlider
+          title="Trending Movies"
+          items={trendingMoviesData?.results}
+          isLoading={isTrendingLoading}
+        />
+        <MovieSlider
+          title="Popular Movies"
+          items={popularMoviesData?.results}
+          isLoading={isPopularLoading}
+        />
+        <MovieSlider
+          title="Top Rated Masterpieces"
+          items={topRatedMoviesData?.results}
+          isLoading={isTopRatedLoading}
+        />
+        <MovieSlider
+          title="Now Playing in Theaters"
+          items={nowPlayingMoviesData?.results}
+          isLoading={isNowPlayingLoading}
+        />
+        <MovieSlider
+          title="Upcoming Releases"
+          items={upcomingMoviesData?.results}
+          isLoading={isUpcomingLoading}
+        />
+        <MovieSlider
+          title="Trending TV Shows"
+          items={trendingTVData?.results}
+          isLoading={isTrendingTVLoading}
+        />
+        <MovieSlider
+          title="Popular TV Series"
+          items={popularTVData?.results}
+          isLoading={isPopularTVLoading}
+        />
       </div>
 
       {/* Movie Trailer Modal */}

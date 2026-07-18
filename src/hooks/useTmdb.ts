@@ -19,6 +19,13 @@ export function usePopularMovies(page = 1) {
   });
 }
 
+export function usePopularHindiMovies(page = 1) {
+  return useQuery({
+    queryKey: ['movies', 'popularHindi', page],
+    queryFn: () => MovieService.getPopularHindi(page),
+  });
+}
+
 export function useTopRatedMovies(page = 1) {
   return useQuery({
     queryKey: ['movies', 'topRated', page],

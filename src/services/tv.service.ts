@@ -1,5 +1,5 @@
 import { tmdbClient } from '@/lib/tmdb';
-import { TMDBTV, TMDBTVDetails, TMDBPageResponse } from '@/types/tmdb';
+import { TMDBTV, TMDBTVDetails, TMDBPageResponse, TMDBVideo } from '@/types/tmdb';
 
 export class TVService {
   static async getTrending(page = 1): Promise<TMDBPageResponse<TMDBTV>> {
@@ -22,6 +22,11 @@ export class TVService {
         append_to_response: 'videos,credits,recommendations,similar,reviews',
       },
     });
+    return data;
+  }
+
+  static async getVideos(id: number): Promise<TMDBPageResponse<TMDBVideo>> {
+    const { data } = await tmdbClient.get<TMDBPageResponse<TMDBVideo>>(`/tv/${id}/videos`);
     return data;
   }
 }

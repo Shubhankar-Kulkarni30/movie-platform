@@ -5,6 +5,7 @@ import { WatchlistProvider } from "@/context/WatchlistContext";
 import { QueryProvider } from "@/context/QueryProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import CinematicIntro from "@/components/layout/CinematicIntro";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-[#060608] text-white">
         <QueryProvider>
           <WatchlistProvider>
+            <CinematicIntro />
             <Navbar />
             <main className="flex-grow flex flex-col">{children}</main>
             <Footer />

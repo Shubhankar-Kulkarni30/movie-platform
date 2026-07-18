@@ -2,15 +2,17 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 import MovieCard, { MovieCardItem } from '../cards/MovieCard';
 
 interface MovieSliderProps {
   title: string;
   items?: MovieCardItem[];
   isLoading?: boolean;
+  seeAllHref?: string;
 }
 
-export default function MovieSlider({ title, items = [], isLoading = false }: MovieSliderProps) {
+export default function MovieSlider({ title, items = [], isLoading = false, seeAllHref }: MovieSliderProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -50,11 +52,21 @@ export default function MovieSlider({ title, items = [], isLoading = false }: Mo
 
   return (
     <div className="relative group/slider my-10 px-4 sm:px-6 lg:px-8">
-      {/* Slider Title */}
-      <h2 className="text-xl sm:text-2xl font-bold text-white mb-6 flex items-center gap-2">
-        <span className="w-1.5 h-6 bg-red-600 rounded-full inline-block font-sans"></span>
-        {title}
-      </h2>
+      {/* Slider Title Header */}
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+          <span className="w-1.5 h-6 bg-red-600 rounded-full inline-block font-sans"></span>
+          {title}
+        </h2>
+        {seeAllHref && (
+          <Link
+            href={seeAllHref}
+            className="text-xs sm:text-sm font-semibold text-red-500 hover:text-red-400 transition-colors uppercase tracking-wider flex items-center gap-1 cursor-pointer mr-2"
+          >
+            See All
+          </Link>
+        )}
+      </div>
 
       {/* Slider Container */}
       <div className="relative">
